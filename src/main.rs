@@ -1,7 +1,7 @@
+use colored::*;
 use rand::Rng;
 use std::cmp::Ordering;
 use std::io;
-use colored::*;
 
 fn main() {
     println!("Guess the number!");
@@ -32,7 +32,10 @@ fn main() {
         let attempts_msg: String = match attempts {
             1..=5 => format!("Congrats. It only took you {} attempts!", attempts),
             6..=10 => format!("Not bad, not bad... {} attempts", attempts),
-            _ => format!("Come on! {} attempts. You can do better than that!", attempts),
+            _ => format!(
+                "Come on! {} attempts. You can do better than that!",
+                attempts
+            ),
         };
 
         match guess.cmp(&secret_number) {
@@ -41,7 +44,7 @@ fn main() {
             Ordering::Equal => {
                 println!("The secret number was: {}", secret_number);
                 println!("{}", attempts_msg);
-                println!("{}","You've won!".green());
+                println!("{}", "You've won!".green());
                 break;
             }
         }
